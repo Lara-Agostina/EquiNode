@@ -27,7 +27,7 @@
     </header>
 
     <main class="p-4 max-w-md mx-auto space-y-6">
-        
+
         <!-- Estado Global -->
         <section class="bg-blue-600 rounded-3xl p-6 text-white shadow-lg shadow-blue-200">
             <p class="text-blue-100 text-sm">Total en Bóveda Colectiva</p>
@@ -113,6 +113,40 @@
 
         // Ejecutar al cargar
         renderPools();
+
+        // Simulación de bancos vinculados
+const bancosVinculados = [
+  { nombre: "Mercado Pago", pais: "Argentina", estado: "Conectado" },
+  { nombre: "Chase Bank", pais: "USA", estado: "Pendiente" }
+];
+
+function realizarAporte(monto, poolId) {
+  const cuentaPrincipal = bancosVinculados.find(b => b.estado === "Conectado");
+  
+  if (cuentaPrincipal) {
+    console.log(`Solicitando $${monto} USD desde ${cuentaPrincipal.nombre}...`);
+    // Aquí se llamaría a la API del banco o exchange
+    alert(`Transferencia de $${monto} exitosa desde tu cuenta vinculada.`);
+  } else {
+    alert("Por favor, vincula una cuenta bancaria para aportar.");
+  }
+}
+
     </script>
+
+    <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 mt-6">
+  <p class="text-[10px] font-bold text-slate-500 uppercase mb-3">Tu Método de Pago</p>
+  <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">MP</div>
+      <div>
+        <p class="text-sm font-bold text-slate-800">Mercado Pago</p>
+        <p class="text-[10px] text-green-500">Cuenta Verificada</p>
+      </div>
+    </div>
+    <button class="text-blue-600 text-xs font-bold">Cambiar</button>
+  </div>
+</div>
+
 </body>
 </html>
